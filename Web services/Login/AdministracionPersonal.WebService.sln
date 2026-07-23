@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37411.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministracionPersonal.WebService", "AdministracionPersonal.WebService\AdministracionPersonal.WebService.csproj", "{2F9C7A13-4D8E-4B62-9A05-C3E71D8B4F52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministracionPersonal.WebService.Modelos", "AdministracionPersonal.WebService.Modelos\AdministracionPersonal.WebService.Modelos.csproj", "{7B4D1E90-2C6A-4F13-8E57-9A0D3B6C1E24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministracionPersonal.WebService.AccesoDatos", "AdministracionPersonal.WebService.AccesoDatos\AdministracionPersonal.WebService.AccesoDatos.csproj", "{C8A2F531-6E09-47B4-92D1-5F3A8C7E0B16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministracionPersonal.WebService.LogicaNegocio", "AdministracionPersonal.WebService.LogicaNegocio\AdministracionPersonal.WebService.LogicaNegocio.csproj", "{5D0B93A7-1F42-4C86-A3E9-7B62D4F015C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministracionPersonal.WebService.PruebasWeb", "AdministracionPersonal.WebService.PruebasWeb\AdministracionPersonal.WebService.PruebasWeb.csproj", "{9E3F27C4-8A15-4D09-B7C6-1E48A5D3F20B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F9C7A13-4D8E-4B62-9A05-C3E71D8B4F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F9C7A13-4D8E-4B62-9A05-C3E71D8B4F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F9C7A13-4D8E-4B62-9A05-C3E71D8B4F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F9C7A13-4D8E-4B62-9A05-C3E71D8B4F52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B4D1E90-2C6A-4F13-8E57-9A0D3B6C1E24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B4D1E90-2C6A-4F13-8E57-9A0D3B6C1E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B4D1E90-2C6A-4F13-8E57-9A0D3B6C1E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B4D1E90-2C6A-4F13-8E57-9A0D3B6C1E24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8A2F531-6E09-47B4-92D1-5F3A8C7E0B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8A2F531-6E09-47B4-92D1-5F3A8C7E0B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8A2F531-6E09-47B4-92D1-5F3A8C7E0B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8A2F531-6E09-47B4-92D1-5F3A8C7E0B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D0B93A7-1F42-4C86-A3E9-7B62D4F015C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D0B93A7-1F42-4C86-A3E9-7B62D4F015C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D0B93A7-1F42-4C86-A3E9-7B62D4F015C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D0B93A7-1F42-4C86-A3E9-7B62D4F015C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E3F27C4-8A15-4D09-B7C6-1E48A5D3F20B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E3F27C4-8A15-4D09-B7C6-1E48A5D3F20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E3F27C4-8A15-4D09-B7C6-1E48A5D3F20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E3F27C4-8A15-4D09-B7C6-1E48A5D3F20B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1E5C0D2-9B34-4E77-8F21-6C0B2D5A1F30}
+	EndGlobalSection
+EndGlobal
