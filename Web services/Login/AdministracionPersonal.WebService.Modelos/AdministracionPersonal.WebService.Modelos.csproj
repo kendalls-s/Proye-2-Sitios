@@ -40,6 +40,7 @@
     <Compile Include="CredencialesUsuario.cs" />
     <Compile Include="ResultadoAutenticacion.cs" />
     <Compile Include="UsuarioAutenticacion.cs" />
+    <Compile Include="OferenteApto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
