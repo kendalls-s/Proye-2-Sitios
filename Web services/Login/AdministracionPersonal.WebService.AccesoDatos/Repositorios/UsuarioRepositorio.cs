@@ -17,13 +17,15 @@ namespace AdministracionPersonal.WebService.AccesoDatos
                 return null;
             }
 
+            // COALESCE evita que un NULL en 'estado' o 'intentos_login' haga
+            // fallar el mapeo de Dapper (no puede convertir NULL a int).
             const string sql = @"
-SELECT id_usuario      AS IdUsuario,
-       usuario         AS Usuario,
-       nombre_completo AS NombreCompleto,
-       password_hash   AS PasswordHash,
-       estado          AS Estado,
-       intentos_login  AS IntentosLogin
+SELECT id_usuario                 AS IdUsuario,
+       usuario                    AS Usuario,
+       nombre_completo            AS NombreCompleto,
+       password_hash              AS PasswordHash,
+       COALESCE(estado,'ACTIVO')  AS Estado,
+       COALESCE(intentos_login,0) AS IntentosLogin
 FROM usuario
 WHERE usuario = @Usuario;";
 

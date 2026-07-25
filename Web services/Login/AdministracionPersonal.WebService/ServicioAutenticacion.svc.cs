@@ -52,7 +52,10 @@ namespace AdministracionPersonal.WebService
                 minutos = 60;
             }
 
-            return new AutenticacionServicio(conexion.ConnectionString, claveAes, minutos);
+            bool mostrarDetalleError;
+            bool.TryParse(ConfigurationManager.AppSettings["Debug:MostrarError"], out mostrarDetalleError);
+
+            return new AutenticacionServicio(conexion.ConnectionString, claveAes, minutos, mostrarDetalleError);
         }
     }
 }

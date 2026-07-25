@@ -26,12 +26,14 @@ namespace AdministracionPersonal.WebService.LogicaNegocio
         private readonly IBitacoraRepositorio _bitacoraRepositorio;
         private readonly ICriptografiaServicio _criptografia;
         private readonly int _minutosSesion;
+        private readonly bool _mostrarDetalleError;
 
-        public AutenticacionServicio(string connectionString, string claveAes, int minutosSesion)
+        public AutenticacionServicio(string connectionString, string claveAes, int minutosSesion, bool mostrarDetalleError = false)
             : this(new UsuarioRepositorio(connectionString),
                    new BitacoraRepositorio(connectionString),
                    new CriptografiaServicio(claveAes),
-                   minutosSesion)
+                   minutosSesion,
+                   mostrarDetalleError)
         {
         }
 
@@ -39,7 +41,8 @@ namespace AdministracionPersonal.WebService.LogicaNegocio
             IUsuarioRepositorio usuarioRepositorio,
             IBitacoraRepositorio bitacoraRepositorio,
             ICriptografiaServicio criptografia,
-            int minutosSesion)
+            int minutosSesion,
+            bool mostrarDetalleError = false)
         {
             if (usuarioRepositorio == null) throw new ArgumentNullException(nameof(usuarioRepositorio));
             if (bitacoraRepositorio == null) throw new ArgumentNullException(nameof(bitacoraRepositorio));
@@ -49,6 +52,7 @@ namespace AdministracionPersonal.WebService.LogicaNegocio
             _bitacoraRepositorio = bitacoraRepositorio;
             _criptografia = criptografia;
             _minutosSesion = minutosSesion > 0 ? minutosSesion : 60;
+            _mostrarDetalleError = mostrarDetalleError;
         }
 
         public ResultadoAutenticacion Autenticar(CredencialesUsuario credenciales)
@@ -112,8 +116,17 @@ namespace AdministracionPersonal.WebService.LogicaNegocio
             }
             catch (Exception ex)
             {
-                Bitacora("ERROR", string.Format("Error tecnico en el login: {0}", ex.Message), null);
-                return ResultadoAutenticacion.Fallido("Ocurrió un error al procesar la autenticación.");
+                // La excepcion real (incluyendo la interna) queda en la bitacora.
+                var detalle = ex.GetBaseException().Message;
+                Bitacora("ERROR", string.Format("Error tecnico en el login: {0}", detalle), null);
+
+                // Con Debug:MostrarError = true, ese detalle se devuelve al cliente
+                // para poder diagnosticar. En produccion se muestra el mensaje generico.
+                var mensaje = _mostrarDetalleError
+                    ? "Error tecnico: " + detalle
+                    : "Ocurrió un error al procesar la autenticación.";
+
+                return ResultadoAutenticacion.Fallido(mensaje);
             }
         }
 
