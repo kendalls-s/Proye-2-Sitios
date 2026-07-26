@@ -19,6 +19,12 @@ namespace AdministracionPersonal.WebService.AccesoDatos
         /// se postularon al puesto y cumplen el 100% de sus requisitos.
         /// </summary>
         IEnumerable<OferenteApto> ObtenerAptosPorPuesto(string codigoPuesto);
+
+        /// <summary>
+        /// Retorna toda la informacion registrada del oferente cuya
+        /// identificacion coincide exactamente, o null si no existe.
+        /// </summary>
+        OferenteDetalle ObtenerDetallePorIdentificacion(string identificacion);
     }
 
     public interface IUsuarioRepositorio

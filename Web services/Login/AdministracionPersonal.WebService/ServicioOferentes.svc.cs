@@ -30,6 +30,11 @@ namespace AdministracionPersonal.WebService
             return _oferentesAptosServicio.ObtenerOferentesAptos(codigoPuesto).ToList();
         }
 
+        public OferenteDetalle ObtenerDetalleOferente(string identificacion)
+        {
+            return _oferentesAptosServicio.ObtenerDetalleOferente(identificacion);
+        }
+
         private static IOferentesAptosServicio CrearServicio()
         {
             var conexion = ConfigurationManager.ConnectionStrings["AdministracionPersonalDb"];

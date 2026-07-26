@@ -14,6 +14,13 @@ namespace AdministracionPersonal.WebService.LogicaNegocio
         /// en bitacora que el codigo no fue encontrado).
         /// </summary>
         IEnumerable<OferenteApto> ObtenerOferentesAptos(string codigoPuesto);
+
+        /// <summary>
+        /// Retorna toda la informacion registrada del oferente cuya
+        /// identificacion coincide. Si no existe, retorna null (se deja
+        /// registrado en bitacora que la identificacion no fue encontrada).
+        /// </summary>
+        OferenteDetalle ObtenerDetalleOferente(string identificacion);
     }
 
     /// <summary>

@@ -67,6 +67,40 @@ namespace AdministracionPersonal.WebService.LogicaNegocio
             }
         }
 
+        public OferenteDetalle ObtenerDetalleOferente(string identificacion)
+        {
+            if (string.IsNullOrWhiteSpace(identificacion))
+            {
+                Bitacora("ERROR", "Consulta de detalle de oferente rechazada: no se indico identificacion.");
+                return null;
+            }
+
+            var ident = identificacion.Trim();
+
+            try
+            {
+                var detalle = _oferenteRepositorio.ObtenerDetallePorIdentificacion(ident);
+                if (detalle == null)
+                {
+                    Bitacora("ERROR", string.Format(
+                        "Consulta de detalle de oferente: no se encontro oferente con identificacion '{0}'.", ident));
+                    return null;
+                }
+
+                Bitacora(
+                    "SELECT",
+                    string.Format("El usuario consulta el detalle del oferente con identificacion '{0}'.", ident));
+
+                return detalle;
+            }
+            catch (Exception ex)
+            {
+                Bitacora("ERROR", string.Format(
+                    "Error tecnico al consultar detalle de oferente con identificacion '{0}': {1}", ident, ex.Message));
+                throw;
+            }
+        }
+
         private void Bitacora(string tipo, string descripcion)
         {
             // idUsuario null: el criterio de aceptacion de Core2 no recibe un

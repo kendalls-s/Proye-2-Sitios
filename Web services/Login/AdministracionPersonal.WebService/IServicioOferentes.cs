@@ -18,5 +18,20 @@ namespace AdministracionPersonal.WebService
     {
         [OperationContract]
         List<OferenteApto> ObtenerOferentesAptos(string codigoPuesto);
+
+        /// <summary>
+        /// Detalle de oferente - "Yo como usuario del sistema quiero un servicio
+        /// de detalle de oferente para obtener el detalle de la informacion de
+        /// un oferente".
+        ///
+        /// Criterios de aceptacion:
+        ///  - Retorna toda la informacion registrada para un oferente.
+        ///  - Recibe como parametro la identificacion del oferente (la tabla
+        ///    oferente no tiene columna "codigo").
+        ///
+        /// Retorna null si no existe un oferente con esa identificacion.
+        /// </summary>
+        [OperationContract]
+        OferenteDetalle ObtenerDetalleOferente(string identificacion);
     }
 }
