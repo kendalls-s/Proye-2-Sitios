@@ -1,7 +1,28 @@
-﻿using AdministracionPersonal.WebService.Modelos;
+﻿using System.Collections.Generic;
+using AdministracionPersonal.WebService.Modelos;
 
 namespace AdministracionPersonal.WebService.LogicaNegocio
 {
+    /// <summary>
+    /// Core2 - Reglas de negocio para obtener los oferentes aptos de un puesto.
+    /// </summary>
+    public interface IOferentesAptosServicio
+    {
+        /// <summary>
+        /// Retorna los oferentes que cumplen los requisitos del puesto indicado.
+        /// Si el puesto no existe, retorna una lista vacia (se deja registrado
+        /// en bitacora que el codigo no fue encontrado).
+        /// </summary>
+        IEnumerable<OferenteApto> ObtenerOferentesAptos(string codigoPuesto);
+
+        /// <summary>
+        /// Retorna toda la informacion registrada del oferente cuya
+        /// identificacion coincide. Si no existe, retorna null (se deja
+        /// registrado en bitacora que la identificacion no fue encontrada).
+        /// </summary>
+        OferenteDetalle ObtenerDetalleOferente(string identificacion);
+    }
+
     /// <summary>
     /// Core4 - Reglas de negocio de la autenticacion de usuarios.
     /// </summary>

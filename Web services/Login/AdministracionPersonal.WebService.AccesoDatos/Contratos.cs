@@ -1,7 +1,32 @@
-﻿using AdministracionPersonal.WebService.Modelos;
+﻿using System.Collections.Generic;
+using AdministracionPersonal.WebService.Modelos;
 
 namespace AdministracionPersonal.WebService.AccesoDatos
 {
+    /// <summary>
+    /// Core2 - Consultas sobre oferentes en relacion a puestos.
+    /// </summary>
+    public interface IOferenteRepositorio
+    {
+        /// <summary>
+        /// Verifica si existe un puesto con ese codigo (para distinguir
+        /// "puesto inexistente" de "sin oferentes aptos" en la bitacora).
+        /// </summary>
+        bool ExistePuesto(string codigoPuesto);
+
+        /// <summary>
+        /// Retorna, a partir de vw_oferentes_aptos_puesto, los oferentes que
+        /// se postularon al puesto y cumplen el 100% de sus requisitos.
+        /// </summary>
+        IEnumerable<OferenteApto> ObtenerAptosPorPuesto(string codigoPuesto);
+
+        /// <summary>
+        /// Retorna toda la informacion registrada del oferente cuya
+        /// identificacion coincide exactamente, o null si no existe.
+        /// </summary>
+        OferenteDetalle ObtenerDetallePorIdentificacion(string identificacion);
+    }
+
     public interface IUsuarioRepositorio
     {
         /// <summary>
