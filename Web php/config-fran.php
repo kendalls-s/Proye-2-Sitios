@@ -14,8 +14,10 @@ define('SOAP_ACTION_PUESTOS', 'http://tempuri.org/IServicioPuestos/ObtenerPuesto
 define('WCF_URL_EMPLEADOS', WCF_BASE_URL . '/ServicioEmpleados.svc');
 define('SOAP_ACTION_EMPLEADOS', 'http://tempuri.org/IServicioEmpleados/CrearEmpleado');
 
-// Core8 (Andrew) - vive en ServicioOferentes.svc junto con Core2.
+// Core2 (Oferentes aptos para un puesto) y Core8 (Detalle de oferente)
+// ambos viven en ServicioOferentes.svc junto con Core2.
 define('WCF_URL_OFERENTES', WCF_BASE_URL . '/ServicioOferentes.svc');
+define('SOAP_ACTION_OFERENTES_APTOS', 'http://tempuri.org/IServicioOferentes/ObtenerOferentesAptos');
 define('SOAP_ACTION_DETALLE_OFERENTE', 'http://tempuri.org/IServicioOferentes/ObtenerDetalleOferente');
 
 define('SOAP_NAMESPACE_MODELOS', 'http://schemas.datacontract.org/2004/07/AdministracionPersonal.WebService.Modelos');
