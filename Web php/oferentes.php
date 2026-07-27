@@ -89,19 +89,34 @@ if ($codigo === '' || $idPuesto <= 0) {
             color: #1a1a1a;
         }
 
-        .boton-regresar {
-            display: inline-block;
-            margin-bottom: 24px;
-            padding: 8px 16px;
-            background-color: #1b3a63;
-            color: #ffffff;
-            text-decoration: none;
+        .panel-acciones {
+            background: #ffffff;
+            border-left: 4px solid #2563eb;
             border-radius: 4px;
-            font-size: 14px;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, .06);
+            max-width: 900px;
         }
 
-        .boton-regresar:hover {
-            background-color: #14294a;
+        .boton-circular {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background-color: #5b7cfa;
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 8px;
+        }
+
+        .boton-circular:hover {
+            background-color: #4169e1;
         }
 
         .tarjeta {
@@ -168,7 +183,9 @@ if ($codigo === '' || $idPuesto <= 0) {
     </header>
 
     <main>
-        <a class="boton-regresar" href="puestos.php">Regresar</a>
+        <div class="panel-acciones">
+            <a class="boton-circular" href="puestos.php" title="Regresar">&#8592;</a>
+        </div>
 
         <h1>Oferentes Disponibles</h1>
 
