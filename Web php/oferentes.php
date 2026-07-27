@@ -49,10 +49,36 @@ if ($codigo === '' || $idPuesto <= 0) {
             align-items: center;
         }
 
+        header .titulo {
+            font-weight: 600;
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
         header a {
             color: #ffffff;
             text-decoration: none;
             font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        header a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        header a.btn-puestos {
+            background-color: #2563eb;
+            font-weight: bold;
+        }
+
+        header a.btn-puestos:hover {
+            background-color: #1e40af;
         }
 
         main {
@@ -134,8 +160,11 @@ if ($codigo === '' || $idPuesto <= 0) {
 </head>
 <body>
     <header>
-        <span>Administración de Personal - Servicios Médicos SA</span>
-        <a href="logout.php">Cerrar sesión</a>
+        <span class="titulo">Administración de Personal - Servicios Médicos SA</span>
+        <nav>
+            <a href="bienvenida.php" class="btn-puestos">Inicio</a>
+            <a href="logout.php">Cerrar sesión</a>
+        </nav>
     </header>
 
     <main>
