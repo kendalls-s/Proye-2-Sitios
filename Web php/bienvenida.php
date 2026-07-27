@@ -27,10 +27,36 @@ if (!isset($_SESSION['usuario'])) {
             align-items: center;
         }
 
+        header .titulo {
+            font-weight: 600;
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
         header a {
             color: #ffffff;
             text-decoration: none;
             font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        header a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        header a.btn-puestos {
+            background-color: #2563eb;
+            font-weight: bold;
+        }
+
+        header a.btn-puestos:hover {
+            background-color: #1e40af;
         }
 
         main {
@@ -39,90 +65,49 @@ if (!isset($_SESSION['usuario'])) {
 
         h1 {
             color: #1a1a1a;
-            margin-bottom: 32px;
         }
 
-        .modulos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            max-width: 1200px;
-        }
-
-        .tarjeta-modulo {
+        .bienvenida-info {
             background: #ffffff;
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
-            padding: 24px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #333;
-            border-left: 4px solid #2563eb;
+            padding: 32px;
+            max-width: 600px;
+            margin-top: 32px;
         }
 
-        .tarjeta-modulo:hover {
-            box-shadow: 0 6px 20px rgba(0, 0, 0, .12);
-            transform: translateY(-2px);
-        }
-
-        .tarjeta-modulo h2 {
-            margin-top: 0;
-            color: #1b3a63;
-            font-size: 20px;
-        }
-
-        .tarjeta-modulo p {
+        .bienvenida-info p {
             color: #666;
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 16px;
+            line-height: 1.6;
             margin: 12px 0;
         }
 
-        .etiqueta-core {
-            display: inline-block;
-            background-color: #e3f2fd;
-            color: #1565c0;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
+        .bienvenida-info .hint {
+            color: #2563eb;
             font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .enlace-acceso {
-            display: inline-block;
-            background-color: #2563eb;
-            color: white;
-            padding: 10px 16px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 12px;
-            transition: background-color 0.3s ease;
-        }
-
-        .enlace-acceso:hover {
-            background-color: #1e40af;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
         }
     </style>
 </head>
 <body>
     <header>
-        <span>Administración de Personal - Servicios Médicos SA</span>
-        <a href="logout.php">Cerrar sesión</a>
+        <span class="titulo">Administración de Personal - Servicios Médicos SA</span>
+        <nav>
+            <a href="puestos.php" class="btn-puestos">Puestos</a>
+            <a href="logout.php">Cerrar sesión</a>
+        </nav>
     </header>
 
     <main>
         <h1>Bienvenido, <?= htmlspecialchars($_SESSION['nombreCompleto'] ?? $_SESSION['usuario']) ?></h1>
 
-        <div class="modulos-grid">
-            <!-- Core1 & Core3: Gestión de Puestos y Empleados -->
-            <a href="puestos.php" class="tarjeta-modulo">
-                <span class="etiqueta-core">Core 1, 3, 6, 9</span>
-                <h2>Gestión de Personal</h2>
-                <p>Accede al listado de puestos activos, revisa los oferentes disponibles y crea nuevos empleados.</p>
-                <div class="enlace-acceso">Ir al módulo →</div>
-            </a>
+        <div class="bienvenida-info">
+            <p>Administración de Personal - Servicios Médicos SA</p>
+            <p>Acceda al módulo de gestión haciendo clic en el botón <strong>"Puestos"</strong> en la barra de navegación superior.</p>
+            <div class="hint">👉 Desde allí podrá consultar puestos disponibles, oferentes y crear nuevos empleados.</div>
         </div>
     </main>
 </body>
