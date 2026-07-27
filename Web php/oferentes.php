@@ -89,18 +89,19 @@ if ($codigo === '' || $idPuesto <= 0) {
             color: #1a1a1a;
         }
 
-        .breadcrumb {
+        .boton-regresar {
+            display: inline-block;
             margin-bottom: 24px;
+            padding: 8px 16px;
+            background-color: #1b3a63;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
             font-size: 14px;
         }
 
-        .breadcrumb a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            text-decoration: underline;
+        .boton-regresar:hover {
+            background-color: #14294a;
         }
 
         .tarjeta {
@@ -155,15 +156,6 @@ if ($codigo === '' || $idPuesto <= 0) {
             color: #6c757d;
             font-style: italic;
         }
-
-        .info-puesto {
-            background-color: #e3f2fd;
-            border-left: 4px solid #2196f3;
-            padding: 12px 16px;
-            margin-bottom: 16px;
-            border-radius: 4px;
-            font-size: 14px;
-        }
     </style>
 </head>
 <body>
@@ -176,28 +168,20 @@ if ($codigo === '' || $idPuesto <= 0) {
     </header>
 
     <main>
+        <a class="boton-regresar" href="puestos.php">Regresar</a>
 
         <h1>Oferentes Disponibles</h1>
 
         <div class="tarjeta">
-            <?php if ($codigo !== '' && $idPuesto > 0): ?>
-                <div class="info-puesto">
-                    <strong>Puesto:</strong> <?= htmlspecialchars($codigo) ?>
-                    (ID: <?= (int) $idPuesto ?>)
-                </div>
-            <?php endif; ?>
-
             <?php if ($error !== ''): ?>
                 <div class="aviso-error"><?= htmlspecialchars($error) ?></div>
             <?php endif; ?>
 
-            <p>Seleccione un oferente para ver su detalle y crear un empleado.</p>
-
             <table>
                 <thead>
                     <tr>
+                        <th>Nombre completo</th>
                         <th>Identificación</th>
-                        <th>Nombre</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -208,13 +192,13 @@ if ($codigo === '' || $idPuesto <= 0) {
                     <?php else: ?>
                         <?php foreach ($oferentes as $oferente): ?>
                             <tr>
-                                <td><?= htmlspecialchars($oferente['identificacion']) ?></td>
                                 <td>
                                     <a class="enlace-oferente"
                                        href="detalle-oferente.php?identificacion=<?= urlencode($oferente['identificacion']) ?>&idPuesto=<?= (int) $idPuesto ?>&codigo=<?= urlencode($codigo) ?>">
                                         <?= htmlspecialchars($oferente['nombre']) ?>
                                     </a>
                                 </td>
+                                <td><?= htmlspecialchars($oferente['identificacion']) ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
