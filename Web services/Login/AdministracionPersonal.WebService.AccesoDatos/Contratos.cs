@@ -1,8 +1,52 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AdministracionPersonal.WebService.Modelos;
 
 namespace AdministracionPersonal.WebService.AccesoDatos
 {
+    /// <summary>
+    /// Core1 - Consultas sobre puestos activos.
+    /// </summary>
+    public interface IPuestoRepositorio
+    {
+        /// <summary>Puestos con disponible = 1, tomados de vw_puestos_disponibles.</summary>
+        IEnumerable<PuestoActivo> ObtenerActivos();
+    }
+
+    /// <summary>
+    /// Resultado interno (no expuesto por el servicio) de intentar crear un
+    /// empleado. La capa de LogicaNegocio traduce cada código al mensaje en
+    /// español exigido por los criterios de aceptación de Core3.
+    /// </summary>
+    public enum CodigoResultadoCrearEmpleado
+    {
+        Ok,
+        OferenteNoExiste,
+        PuestoNoExiste,
+        PuestoNoDisponible,
+        YaEsEmpleado
+    }
+
+    public class ResultadoInternoCrearEmpleado
+    {
+        public CodigoResultadoCrearEmpleado Codigo { get; set; }
+        public int IdEmpleado { get; set; }
+        public string NumeroEmpleado { get; set; }
+    }
+
+    /// <summary>
+    /// Core3 - Alta de empleados a partir de un oferente existente.
+    /// </summary>
+    public interface IEmpleadoRepositorio
+    {
+        /// <summary>
+        /// Ejecuta, dentro de una única transacción, todas las validaciones y el
+        /// alta del empleado (tabla empleado + accion_personal de contratación).
+        /// </summary>
+        ResultadoInternoCrearEmpleado CrearEmpleado(
+            int idOferente, int idPuesto, DateTime fechaIngreso, int? idAprobador);
+    }
+
     /// <summary>
     /// Core2 - Consultas sobre oferentes en relacion a puestos.
     /// </summary>
