@@ -316,3 +316,57 @@ XML;
 
     return ['exito' => true, 'mensaje' => '', 'oferente' => $oferente];
 }
+
+// =====================================================================
+// Core2 - Oferentes aptos para un puesto
+// =====================================================================
+
+/**
+ * Consume ObtenerOferentesAptos (Core2) y devuelve lista de oferentes
+ * que cumplen los requisitos del puesto.
+ *
+ * @return array{exito: bool, mensaje: string, oferentes: array<int, array{idOferente:int, nombre:string, identificacion:string}>}
+ */
+function obtenerOfertesAptosWCF(string $codigoPuesto): array
+{
+    $codigoSeguro = escaparParaXml($codigoPuesto);
+
+    $xmlSobre = <<<XML
+<?xml version="1.0" encoding="utf-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:ObtenerOferentesAptos>
+         <tem:codigoPuesto>{$codigoSeguro}</tem:codigoPuesto>
+      </tem:ObtenerOferentesAptos>
+   </soapenv:Body>
+</soapenv:Envelope>
+XML;
+
+    $peticion = ejecutarPeticionSoap(WCF_URL_OFERENTES, SOAP_ACTION_OFERENTES_APTOS, $xmlSobre);
+
+    if (!$peticion['ok']) {
+        return ['exito' => false, 'mensaje' => $peticion['error'], 'oferentes' => []];
+    }
+
+    $doc = new DOMDocument();
+    if (!@$doc->loadXML($peticion['body'])) {
+        return ['exito' => false, 'mensaje' => 'Respuesta inválida del servicio de oferentes.', 'oferentes' => []];
+    }
+
+    $mensajeFault = mensajeDeFaultSoap($doc);
+    if ($mensajeFault !== '') {
+        return ['exito' => false, 'mensaje' => $mensajeFault, 'oferentes' => []];
+    }
+
+    $oferentes = [];
+    foreach ($doc->getElementsByTagName('OferenteApto') as $item) {
+        $oferentes[] = [
+            'idOferente' => (int) textoDeEtiqueta($item, 'IdOferente', '0'),
+            'nombre' => textoDeEtiqueta($item, 'Nombre'),
+            'identificacion' => textoDeEtiqueta($item, 'Identificacion'),
+        ];
+    }
+
+    return ['exito' => true, 'mensaje' => '', 'oferentes' => $oferentes];
+}

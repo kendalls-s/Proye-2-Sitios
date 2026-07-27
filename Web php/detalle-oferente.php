@@ -10,6 +10,7 @@ require_once __DIR__ . '/data-fran.php';
 
 $identificacion = trim($_GET['identificacion'] ?? $_POST['identificacion'] ?? '');
 $idPuesto = (int) ($_GET['idPuesto'] ?? $_POST['idPuesto'] ?? 0);
+$codigo = trim($_GET['codigo'] ?? $_POST['codigo'] ?? '');
 
 $error = '';
 $oferente = null;
@@ -222,10 +223,11 @@ function formatearFecha(string $fechaIso, bool $conHora = false): string
                 <input type="hidden" name="accion" value="crear_empleado">
                 <input type="hidden" name="identificacion" value="<?= htmlspecialchars($identificacion) ?>">
                 <input type="hidden" name="idPuesto" value="<?= (int) $idPuesto ?>">
+                <input type="hidden" name="codigo" value="<?= htmlspecialchars($codigo) ?>">
                 <input type="hidden" name="idOferente" value="<?= (int) $oferente['idOferente'] ?>">
 
                 <div class="panel-acciones">
-                    <a class="boton-circular" href="puestos.php" title="Cancelar">&#8592;</a>
+                    <a class="boton-circular" href="oferentes.php?codigo=<?= urlencode($codigo) ?>&idPuesto=<?= (int) $idPuesto ?>" title="Cancelar">&#8592;</a>
                     <button type="submit" class="boton-circular" title="Crear empleado">&#10003;</button>
                 </div>
 
