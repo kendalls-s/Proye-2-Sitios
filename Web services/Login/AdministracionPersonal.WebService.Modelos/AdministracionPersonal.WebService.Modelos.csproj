@@ -42,6 +42,9 @@
     <Compile Include="UsuarioAutenticacion.cs" />
     <Compile Include="OferenteApto.cs" />
     <Compile Include="OferenteDetalle.cs" />
+    <Compile Include="PuestoActivo.cs" />
+    <Compile Include="SolicitudCrearEmpleado.cs" />
+    <Compile Include="ResultadoCrearEmpleado.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

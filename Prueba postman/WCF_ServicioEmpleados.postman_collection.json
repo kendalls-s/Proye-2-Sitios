@@ -1,0 +1,88 @@
+{
+  "info": {
+    "name": "WCF - ServicioEmpleados (Core3)",
+    "description": "Pruebas del servicio WCF de creacion de empleados (HU Core3).\nVive en el MISMO sitio que ServicioAutenticacion/ServicioOferentes (mismo puerto).\n\nComo usar:\n1. Arranca el WCF en Visual Studio (IIS Express). Debe quedar en http://localhost:62310.\n2. Ejecuta '2. Crear empleado' con un idOferente que NO tenga ya empleado y un idPuesto disponible.\n   En BdSitiosV4.sql, los oferentes 26 a 32 todavia no tienen empleado asociado.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:62310",
+      "type": "string"
+    },
+    {
+      "key": "idOferente",
+      "value": "29",
+      "type": "string"
+    },
+    {
+      "key": "idPuesto",
+      "value": "4",
+      "type": "string"
+    },
+    {
+      "key": "fechaIngreso",
+      "value": "2026-07-19T00:00:00",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Ver WSDL (confirma que el servicio esta arriba)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/ServicioEmpleados.svc?singleWsdl",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "ServicioEmpleados.svc"
+          ],
+          "query": [
+            {
+              "key": "singleWsdl",
+              "value": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "2. Crear empleado (SOAP)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/xml; charset=utf-8"
+          },
+          {
+            "key": "SOAPAction",
+            "value": "\"http://tempuri.org/IServicioEmpleados/CrearEmpleado\""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n                  xmlns:tem=\"http://tempuri.org/\"\n                  xmlns:mod=\"http://schemas.datacontract.org/2004/07/AdministracionPersonal.WebService.Modelos\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <tem:CrearEmpleado>\n         <tem:solicitud>\n            <mod:IdOferente>{{idOferente}}</mod:IdOferente>\n            <mod:IdPuesto>{{idPuesto}}</mod:IdPuesto>\n            <mod:FechaIngreso>{{fechaIngreso}}</mod:FechaIngreso>\n         </tem:solicitud>\n      </tem:CrearEmpleado>\n   </soapenv:Body>\n</soapenv:Envelope>",
+          "options": {
+            "raw": {
+              "language": "xml"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/ServicioEmpleados.svc",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "ServicioEmpleados.svc"
+          ]
+        },
+        "description": "Busca <Creado>true</Creado>, <NumeroEmpleado> e <IdEmpleado>. Si Creado es false, revisa <Mensaje>."
+      }
+    }
+  ]
+}

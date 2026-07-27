@@ -4,6 +4,22 @@ using AdministracionPersonal.WebService.Modelos;
 namespace AdministracionPersonal.WebService.LogicaNegocio
 {
     /// <summary>
+    /// Core1 - Reglas de negocio del listado de puestos activos.
+    /// </summary>
+    public interface IPuestosServicio
+    {
+        IEnumerable<PuestoActivo> ObtenerPuestosActivos();
+    }
+
+    /// <summary>
+    /// Core3 - Reglas de negocio para el registro de un empleado.
+    /// </summary>
+    public interface IEmpleadosServicio
+    {
+        ResultadoCrearEmpleado CrearEmpleado(SolicitudCrearEmpleado solicitud);
+    }
+
+    /// <summary>
     /// Core2 - Reglas de negocio para obtener los oferentes aptos de un puesto.
     /// </summary>
     public interface IOferentesAptosServicio
