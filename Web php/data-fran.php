@@ -363,7 +363,7 @@ XML;
     foreach ($doc->getElementsByTagName('OferenteApto') as $item) {
         $oferentes[] = [
             'idOferente' => (int) textoDeEtiqueta($item, 'IdOferente', '0'),
-            'nombre' => textoDeEtiqueta($item, 'Nombre'),
+            'nombre' => textoDeEtiqueta($item, 'NombreCompleto'),
             'identificacion' => textoDeEtiqueta($item, 'Identificacion'),
         ];
     }
