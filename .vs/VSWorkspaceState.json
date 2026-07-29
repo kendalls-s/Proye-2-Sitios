@@ -5,9 +5,8 @@
     "\\Web services\\Login",
     "\\Web services\\Login\\AdministracionPersonal.WebService.AccesoDatos",
     "\\Web services\\Login\\AdministracionPersonal.WebService.AccesoDatos\\Repositorios",
-    "\\Web services\\Login\\AdministracionPersonal.WebService.LogicaNegocio\\Properties",
     "\\Web services\\Login\\AdministracionPersonal.WebService.PruebasWeb"
   ],
-  "SelectedNode": "\\Web services\\Login\\AdministracionPersonal.WebService.AccesoDatos\\Repositorios\\OferenteRepositorio.cs",
+  "SelectedNode": "\\Web services\\Login\\AdministracionPersonal.WebService.sln",
   "PreviewInSolutionExplorer": false
 }
